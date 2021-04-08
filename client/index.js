@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from './app';
-// import Routes from "./routes";
+import App from './components/app';
 
 const app = document.querySelector('#app');
 

@@ -4,13 +4,15 @@ import axios from 'axios';
 import {Link} from "react-router-dom";
 import NavBar from "./NavBar";
 
-const SingleMeal = () => {
+const SingleMeal = (props) => {
+
+  console.log("props in single meal is ",props);
 
   const [meal, setMeal] = useState(null);
 
   useEffect(async () => {
     const { meals } = (
-      await axios.get('https://www.themealdb.com/api/json/v1/1/random.php')
+      await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?s=arrabiata`)
     ).data;
     setMeal(meals[0]);
   }, []);
@@ -30,7 +32,7 @@ const SingleMeal = () => {
         break;
       }
     }
-    console.log(ingredients)
+
     let youTubeId = meal.strYoutube.slice(-11);
     let youTubeURL = "https://www.youtube.com/embed/"+youTubeId;
     console.log(youTubeURL);
@@ -40,6 +42,8 @@ const SingleMeal = () => {
       <div className="dinner-box">
         <NavBar />
       <center>
+        <p>This should be the single meal page!</p>
+
       <h1><strong>{meal.strMeal}</strong></h1>
       <h2>Ingredients</h2>
       <ul>
